@@ -23,7 +23,7 @@ It also includes the following upgraded/additional npm dev dependencies:
 
 ## Demo
 
-http://laravel-coming-soon.gnomad.xyz
+http://coming-soon.gnomad.xyz
 
 ## License
 
