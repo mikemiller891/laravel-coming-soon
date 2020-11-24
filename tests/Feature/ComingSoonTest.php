@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Http\Livewire\SubscriptionForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class ComingSoonTest extends TestCase
@@ -31,16 +33,11 @@ class ComingSoonTest extends TestCase
         $this->assertDatabaseCount('visitors', 0);
 
         $email = $this->faker->email;
-        $inputs = [
-            'email' => $email,
-        ];
-        $response = $this->post('/', $inputs);
+
+        Livewire::test(SubscriptionForm::class)
+            ->set('email', $email)
+            ->call('subscribe');
 
         $this->assertDatabaseCount('visitors', 1);
-
-        $response
-            ->assertOk()
-            ->assertViewIs('coming-soon')
-            ->assertSee('<title>'.config('app.name').'</title>', false);
     }
 }
