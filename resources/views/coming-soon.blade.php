@@ -11,6 +11,10 @@
 
                 <livewire:subscription-form />
 
+                <a href="https://github.com/mikemiller891/laravel-coming-soon" target="_blank">
+                    <x-ri-github-fill class="h-10 w-10 float-right" />
+                </a>
+
             </div>
         </div>
 
