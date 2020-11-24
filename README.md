@@ -20,7 +20,6 @@ It also includes the following upgraded/additional npm dev dependencies:
 * postcss:^7.0.35
 * tailwindcss:npm:@tailwindcss/postcss7-compat@^2.0.1
 * vue-template-compiler:^2.6.12
-* tailwindcss:npm:@tailwindcss/postcss7-compat@^2.0.1
 
 ## Demo
 
