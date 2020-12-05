@@ -7,13 +7,15 @@ new [Laravel](https://laravel.com) +
 [Jetsteam](https://jetstream.laravel.com) + 
 [Livewire](https://laravel-livewire.com/) app.
 
-It includes the following additional composer dev dependencies:
+It includes the following additional composer dependencies:
 * barryvdh/laravel-debugbar:^3.5
 * barryvdh/laravel-ide-helper:^2.8
 * friendsofphp/php-cs-fixer:^2.16
 * roave/security-advisories:dev-master
 * sven/artisan-view:^3.3
 * ukfast/laravel-health-check:^1.8
+* spatie/laravel-permission:^3.17
+* blade-ui-kit/blade-icons:^0.5.1
 
 It also includes the following upgraded/additional npm dev dependencies:   
 * autoprefixer:^9.8.6
