@@ -31304,6 +31304,10 @@ select {
           animation: bounce 1s infinite;
 }
 
+html[theme='dark-mode'] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
