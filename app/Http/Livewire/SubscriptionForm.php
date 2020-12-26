@@ -24,6 +24,7 @@ class SubscriptionForm extends Component
         $subscriber = new Subscriber;
         $subscriber->email = $validInputs['email'];
         $subscriber->save();
+        visitor()->visit($subscriber);
         session()->flash('success', true);
         $this->reset();
     }
