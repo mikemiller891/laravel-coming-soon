@@ -23,4 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
-Route::view('/', 'coming-soon');
+Route::get('/', function () {
+    visitor()->visit();
+    return view('coming-soon');
+});
