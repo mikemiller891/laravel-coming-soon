@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Shetabit\Visitor\Traits\Visitable;
 
 class Subscriber extends Model
 {
     use HasFactory;
+    use Visitable;
 }
