@@ -168,18 +168,18 @@
     if [ ! -d {{ $path }}/storage ]; then
         cd {{ $release }}
         mv {{ $release }}/.env.{{ $env }} {{ $release }}/.env
-
+        echo "" >> {{ $release }}/.env
         echo "DB_DATABASE=\"{{ $db_database }}\"" >> {{ $release }}/.env
         echo "DB_USERNAME=\"{{ $db_database }}\"" >> {{ $release }}/.env
         echo "DB_PASSWORD=\"{{ $db_password }}\"" >> {{ $release }}/.env
-
-        echo "DEPLOY_MAIL_HOST=\"{{ $mail_host }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_PORT=\"{{ $mail_port }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_USERNAME=\"{{ $mail_username }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_PASSWORD=\"{{ $mail_password }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_ENCRYPTION=\"{{ $mail_encryption }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_FROM_ADDRESS=\"{{ $mail_from_address }}\"" >> {{ $release }}/.env
-        echo "DEPLOY_MAIL_FROM_NAME=\"{{ $mail_from_name }}\"" >> {{ $release }}/.env
+        echo "" >> {{ $release }}/.env
+        echo "MAIL_HOST=\"{{ $mail_host }}\"" >> {{ $release }}/.env
+        echo "MAIL_PORT=\"{{ $mail_port }}\"" >> {{ $release }}/.env
+        echo "MAIL_USERNAME=\"{{ $mail_username }}\"" >> {{ $release }}/.env
+        echo "MAIL_PASSWORD=\"{{ $mail_password }}\"" >> {{ $release }}/.env
+        echo "MAIL_ENCRYPTION=\"{{ $mail_encryption }}\"" >> {{ $release }}/.env
+        echo "MAIL_FROM_ADDRESS=\"{{ $mail_from_address }}\"" >> {{ $release }}/.env
+        echo "MAIL_FROM_NAME=\"{{ $mail_from_name }}\"" >> {{ $release }}/.env
 
         {{ $php }} artisan key:generate
         mv {{ $release }}/.env {{ $path }}/.env
