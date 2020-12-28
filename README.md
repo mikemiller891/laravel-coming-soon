@@ -6,7 +6,7 @@
 [Jetsteam](https://jetstream.laravel.com) +
 [Livewire](https://laravel-livewire.com/) app.
 
-It includes a zero downtime [Envoy](https://laravel.com/docs/envoy) deployment script **[TODO]**, and has been upgraded
+It includes a zero downtime [Envoy](https://laravel.com/docs/envoy) deployment script, and has been upgraded
 to Tailwind 2.0.
 
 It also includes an administrative interface for managing users and subscribers **[TODO]**.
@@ -26,12 +26,12 @@ It also includes the following additional dependencies:
 * blade-ui-kit/blade-heroicons
 * blade-ui-kit/blade-icons
 * blade-ui-kit/blade-ui-kit
-* ukfast/laravel-health-check **[TODO]**
-* spatie/laravel-permission **[TODO]**
+* ukfast/laravel-health-check
+* spatie/laravel-permission
 
 ## Demo Site
 
-http://coming-soon.gnomad.xyz **[TODO]**
+http://coming-soon.gnomad.xyz
 
 ## License
 
