@@ -1,5 +1,5 @@
 <x-score-card
-    href="{{ route('visitors.index') }}"
+    href="#"
     bg="bg-green-100"
     fg="bg-green-700"
     score="{{ $count }}"
