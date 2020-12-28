@@ -1,7 +1,6 @@
 <x-score-card
     href="#"
-    bg="bg-red-100"
-    fg="bg-red-700"
+    class="bg-red-200 hover:bg-red-700"
     score="{{ $count }}"
     caption="Subscribers"
     icon="heroicon-o-at-symbol"
