@@ -16,17 +16,24 @@
         echo $e->getMessage();
     }
 
-    $php_ver     = $_ENV['DEPLOY_PHP_VERSION'];
-    $tmp         = $_ENV['DEPLOY_TMP'];
-    $user        = $_ENV['DEPLOY_USER'] ?? 'envoy';
-    $server      = $_ENV['DEPLOY_SERVER'];
-    $repo        = $_ENV['DEPLOY_REPOSITORY'];
-    $branch      = $_ENV['DEPLOY_BRANCH'] ?? 'main';
-    $path        = $_ENV['DEPLOY_PATH'];
-    $slack       = $_ENV['DEPLOY_SLACK_WEBHOOK'] ?? '';
-    $db_database = $_ENV['DEPLOY_DATABASE'];
-    $env         = $_ENV['DEPLOY_ENV'] ?? 'production';
-    $health_url  = $_ENV['DEPLOY_HEALTH_URL'] ?? '';
+    $php_ver           = $_ENV['DEPLOY_PHP_VERSION'];
+    $tmp               = $_ENV['DEPLOY_TMP'];
+    $user              = $_ENV['DEPLOY_USER'] ?? 'envoy';
+    $server            = $_ENV['DEPLOY_SERVER'];
+    $repo              = $_ENV['DEPLOY_REPOSITORY'];
+    $branch            = $_ENV['DEPLOY_BRANCH'] ?? 'main';
+    $path              = $_ENV['DEPLOY_PATH'];
+    $slack             = $_ENV['DEPLOY_SLACK_WEBHOOK'] ?? '';
+    $db_database       = $_ENV['DEPLOY_DATABASE'];
+    $env               = $_ENV['DEPLOY_ENV'] ?? 'production';
+    $health_url        = $_ENV['DEPLOY_HEALTH_URL'] ?? '';
+    $mail_host         = $_ENV['DEPLOY_MAIL_HOST'] ?? '127.0.0.1';
+    $mail_port         = $_ENV['DEPLOY_MAIL_PORT'] ?? '25';
+    $mail_username     = $_ENV['DEPLOY_MAIL_USERNAME'];
+    $mail_password     = $_ENV['DEPLOY_MAIL_PASSWORD'];
+    $mail_encryption   = $_ENV['DEPLOY_MAIL_ENCRYPTION'] ?? 'null';
+    $mail_from_address = $_ENV['DEPLOY_MAIL_FROM_ADDRESS'] ?? $_ENV['DEPLOY_MAIL_USERNAME'];
+    $mail_from_name    = $_ENV['DEPLOY_MAIL_FROM_NAME'] ?? $_ENV['DEPLOY_MAIL_USERNAME'];
 
     if ( substr($path, 0, 1) !== '/' ) {
         throw new Exception('Careful - your deployment path does not begin with /');
@@ -161,9 +168,19 @@
     if [ ! -d {{ $path }}/storage ]; then
         cd {{ $release }}
         mv {{ $release }}/.env.{{ $env }} {{ $release }}/.env
+
         echo "DB_DATABASE=\"{{ $db_database }}\"" >> {{ $release }}/.env
         echo "DB_USERNAME=\"{{ $db_database }}\"" >> {{ $release }}/.env
         echo "DB_PASSWORD=\"{{ $db_password }}\"" >> {{ $release }}/.env
+
+        echo "DEPLOY_MAIL_HOST=\"{{ $mail_host }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_PORT=\"{{ $mail_port }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_USERNAME=\"{{ $mail_username }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_PASSWORD=\"{{ $mail_password }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_ENCRYPTION=\"{{ $mail_encryption }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_FROM_ADDRESS=\"{{ $mail_from_address }}\"" >> {{ $release }}/.env
+        echo "DEPLOY_MAIL_FROM_NAME=\"{{ $mail_from_name }}\"" >> {{ $release }}/.env
+
         {{ $php }} artisan key:generate
         mv {{ $release }}/.env {{ $path }}/.env
         echo "Environment file set up"
